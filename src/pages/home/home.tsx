@@ -1,9 +1,10 @@
 import React from "react";
 import HeartsComponent from "../../components/hearts/hearts";
+import guestService from "../../core/services/guest.service";
 //import Lottie from "react-lottie";
 import "./home.scss";
 interface IProps {
-  onFinish?: Function;
+  onFinish: Function;
 }
 interface IState {
 
@@ -23,7 +24,13 @@ class HomePage extends React.Component<IProps, IState> {
     e.preventDefault();
     console.log('e', e);
     const form = e.target;
-    const document = form.document.value;    
+    const document = form.document.value;
+    guestService.validateDocument(document).then(res => {
+      console.log('res', res);
+      this.props.onFinish(res);
+    }, error => {
+      alert(error.message);
+    })
   }
   render() {
     return (
