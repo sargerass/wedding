@@ -1,0 +1,16 @@
+.app-input {
+  border: 0;
+  font-family: var(--font-primary);
+  text-align: center;
+  font-size: 10px;
+  background-color: #e4e6ea;
+  color: #000;
+  padding: 10px;
+  width: 100%;
+  border-bottom: 1px solid #e1e3e4;
+  margin-bottom: 15px;
+  &::placeholder {
+    text-align: center;
+    color: #666666;
+  }
+}

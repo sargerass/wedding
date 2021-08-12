@@ -1,13 +1,29 @@
+:root {
+  --font-primary: 'Open Sans';
+  --font-secondary: 'Dancing Script';
+  --font-cursive: 'Parisienne';
+  --primary: #663333;
+  --secondary: #996666;
+  --light: #cc9999;
+}
+* {
+  box-sizing:border-box;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+img {
+  display: block;
+}
+button,a textarea {
+  outline: none;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@import './assets/scss/input.scss';
+@import './assets/scss/button.scss';

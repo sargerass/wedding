@@ -1,0 +1,58 @@
+.app {
+  background-image: url('./assets/images/papel.jpg');
+  text-align: center;
+  &__top {
+    position: absolute;
+    top: 0;
+    overflow: hidden;
+    img {
+      position: absolute;
+    }
+    &--l {
+      left: 0;
+      width: 100px;
+      height: 100px;
+      img {
+        width: 90px;
+        top: 0;
+        left: 0;
+      }
+    }
+    &--r {
+      right: 0;
+      width: 200px;
+      height: 200px;
+      img {
+        width: 300px;
+        bottom: 0;
+      }
+    }
+  }
+  &__bottom {
+    position: absolute;
+    bottom: 0;
+    overflow: hidden;
+    img {
+      position: absolute;
+    }
+    &--l {
+      left: 0;
+      width: 200px;
+      height: 100px;
+      img {
+        width: 250px;
+        top: 0;
+        right: 0;
+      }
+    }
+    &--r {
+      right: 0;
+      width: 100px;
+      height: 100px;
+      img {
+        width: 250px;
+        top: 0;
+      }
+    }
+  }
+}

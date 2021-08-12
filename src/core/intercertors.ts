@@ -2,9 +2,7 @@ import axios from "axios";
 
 export class AppInterceptor {
   private static instance: AppInterceptor;
-  constructor() {
-    console.log("eee2");
-  }
+
   public static getInstance(): AppInterceptor {
     if (!AppInterceptor.instance) {
       AppInterceptor.instance = new AppInterceptor();
