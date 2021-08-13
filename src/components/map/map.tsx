@@ -11,8 +11,8 @@ class MapComponent extends React.Component<IProps, IState> {
   
   static defaultProps = {
     center: {
-      lat: -11.9674452,
-      lng: -76.74892
+      lat: -12.0165912,
+      lng: -76.8853589
     },
     zoom: 15
   };
@@ -57,8 +57,8 @@ const Marker = (props: any) => {
   return <div className="app-map__marker" >
     <img src={point} alt="" /> 
     <div className="app-map__marker__message">
-    Las Vegas Manzana C Lote 12_A <br />
-      Chosica altura puente los Ángeles
+      Villa Leonor <br />
+      Avenida 28 de Julio Nº138, Ate
     </div>
   </div>
 }

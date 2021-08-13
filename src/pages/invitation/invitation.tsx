@@ -40,10 +40,10 @@ class InvitationPage extends React.Component<IProps, IState> {
     const { messages } = this.state;
     let component, section;
     if (type == EnumModalTransition.Revealing) {
-      section = 'map';
+      section = "map";
       component = <MapComponent />;
     } else {
-      section = 'mensajes';
+      section = "mensajes";
       component = <LeaveMeesageComponent guest={guest} />;
     }
     LogService.getInstance().register("Open modal", section);
@@ -54,7 +54,7 @@ class InvitationPage extends React.Component<IProps, IState> {
     const { firstname, linkImage } = guest;
     const { type, component, showModal } = this.state;
     return (
-      <div className="page-invitation">
+      <div className="page page-invitation">
         <div className="page-invitation__content">
           <div className="page-invitation__content__area">
             <img className="page-invitation__image" src={linkImage} alt="" />
@@ -73,7 +73,9 @@ class InvitationPage extends React.Component<IProps, IState> {
               </div>
               <div className="page-invitation__date__index">2021</div>
             </div>
-
+            <div className="page-invitation__falabella">
+              Novios Falabella <strong>656316-03</strong>
+            </div>
             <div className="page-invitation__buttons">
               <button
                 className="app-button app-button--block app-button--secondary"

@@ -19,9 +19,8 @@ export class LogService {
     data.append("event", event);
     data.append("user", user);
     
-    additional && data.append("additional", additional);
-    console.log('save esto', user, event);
+    additional && data.append("detail", additional);
     
-    return axios.post(HttpAPI.message, data);
+    return axios.post(HttpAPI.log, data);
   }
 }

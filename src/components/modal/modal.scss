@@ -15,6 +15,7 @@
   &__content {
     position: relative;
     z-index: 2;
+    height: 100%;
     &__btn-close {
       position: absolute;
       top: 15px;
@@ -230,6 +231,7 @@
       position:relative;
       width: 100%;
       max-width: 800px;
+      height: 100%;
       h2 {
         font-size:25px;
         line-height:25px;

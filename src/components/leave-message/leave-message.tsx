@@ -10,6 +10,7 @@ import LoaderComponent from "../loader/loader";
 import back from "../../assets/images/icons/back.png";
 import Resizer from "react-image-file-resizer";
 import { resizeFile } from "../../core/helpers";
+import imageFlour from '../../assets/images/top-r.png';
 interface IProps {
   guest: IGuest;
 }
@@ -53,6 +54,7 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
           this.setState({ messages: res, loader: false });
         },
         (error) => {
+          this.setState({ messages: [], loader: false });
           console.log("error", error);
         }
       );
@@ -189,6 +191,7 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
         className="app-leave-message"
         style={{ backgroundImage: `url(${bg})` }}
       >
+        <img className="app-leave-message__image" src={imageFlour} alt="" />
         <div id="mssages" className="app-leave-message__messages">
           {messages}
         </div>

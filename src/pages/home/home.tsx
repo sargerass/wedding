@@ -107,7 +107,7 @@ class HomePage extends React.Component<IProps, IState> {
     const { hasError, loading } = this.state;
     const content = loading ? <LoaderComponent /> : this._getBodyHome();
     return (
-      <div className="page-home">
+      <div className="page page-home">
         <HeartsComponent />
         <div className="page-home__content">{content}</div>
       </div>
