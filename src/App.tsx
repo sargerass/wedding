@@ -36,7 +36,7 @@ class App extends React.Component<IProps, IState> {
       }
     };
     this.state = {
-      guest,
+      guest: undefined,
     };
     this._enterGuest = this._enterGuest.bind(this);
   }
