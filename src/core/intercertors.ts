@@ -13,6 +13,7 @@ export class AppInterceptor {
   public init(): void {
     this._handleRequest();
     this._handleResponse();
+    this._handleClick();
   }
   private _handleResponse(): void {
     axios.interceptors.response.use(
@@ -27,5 +28,9 @@ export class AppInterceptor {
       }
     );
   }
-  private _handleRequest(): void {}
+  private _handleRequest(): void {
+  }
+  private _handleClick():void {
+    
+  }
 }

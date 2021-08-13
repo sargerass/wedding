@@ -11,4 +11,20 @@
       margin: 0;
     }
   }
+  &__marker {
+    width: 180px;
+    display: flex;
+    align-items: center;
+    margin-top: -15px;
+    img {
+      flex-shrink: 0;
+    }
+    &__message {
+      color: var(--primary);
+      background: white;
+      margin-left: 5px;
+      padding: 5px;
+      font-size: 9px;
+    }
+  }
 }

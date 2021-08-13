@@ -5,6 +5,7 @@ import ModalComponent from "../../components/modal/modal";
 import { EnumModalTransition } from "../../core/enums";
 import { IGuest, IMessage } from "../../core/intrefaces";
 import { MessageService } from "../../core/services";
+import { LogService } from "../../core/services/logs.service";
 import "./invitation.scss";
 interface IProps {
   //onFinish?: Function;
@@ -30,19 +31,22 @@ class InvitationPage extends React.Component<IProps, IState> {
   private _setup(): void {
     this._closeModal = this._closeModal.bind(this);
   }
-  
+
   private _closeModal(): void {
     this.setState({ showModal: false });
   }
   private _showModal(type: EnumModalTransition): void {
     const { guest } = this.props;
     const { messages } = this.state;
-    const component =
-      type == EnumModalTransition.Revealing ? (
-        <MapComponent />
-      ) : (
-        <LeaveMeesageComponent guest={guest} />
-      );
+    let component, section;
+    if (type == EnumModalTransition.Revealing) {
+      section = 'map';
+      component = <MapComponent />;
+    } else {
+      section = 'mensajes';
+      component = <LeaveMeesageComponent guest={guest} />;
+    }
+    LogService.getInstance().register("Open modal", section);
     this.setState({ showModal: true, component, type });
   }
   render() {

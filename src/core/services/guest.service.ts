@@ -11,8 +11,8 @@ export class GuestService {
 
     return GuestService.instance;
   }
-  public validateDocument(document:string): Promise<AxiosResponse<IGuest>> {
+  public validateDocument(document:string): Promise<IGuest> {
     const url = `${HttpAPI.guest}/${document}`;
-    return axios.get<IGuest>(url);
+    return axios.get(url);
   }
 }

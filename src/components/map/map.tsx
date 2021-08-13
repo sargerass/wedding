@@ -2,6 +2,7 @@ import GoogleMapReact from 'google-map-react';
 import React from "react";
 //import Lottie from "react-lottie";
 import "./map.scss";
+import point from "../../assets/images/icons/point.png";
 interface IProps {
 
 }
@@ -53,6 +54,12 @@ class MapComponent extends React.Component<IProps, IState> {
   }
 }
 const Marker = (props: any) => {
-  return <div className="SuperAwesomePin" style={{color: '#f00'}}>Aca</div>
+  return <div className="app-map__marker" >
+    <img src={point} alt="" /> 
+    <div className="app-map__marker__message">
+    Las Vegas Manzana C Lote 12_A <br />
+      Chosica altura puente los Ángeles
+    </div>
+  </div>
 }
 export default MapComponent;

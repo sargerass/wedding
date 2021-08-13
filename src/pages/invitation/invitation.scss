@@ -13,7 +13,7 @@
     }
   }
   &__message{
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.6;
     letter-spacing: .04em;
     margin-bottom: 15px;
@@ -41,7 +41,7 @@
     margin: 15px auto;
     max-width: 230px;
     &__index {
-      font-size: 7px;
+      font-size: 10px;
       font-weight: 300;
       text-align: center;
     }
@@ -58,11 +58,11 @@
       border-bottom: 1px solid #000;
       text-transform: uppercase;
       font-weight: 300;
-      font-size: 13px;
+      font-size: 16px;
     }
     &__day {
       text-align: center;
-      font-size: 20px;
+      font-size: 30px;
     }
   }
 }

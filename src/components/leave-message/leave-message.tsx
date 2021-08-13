@@ -8,6 +8,8 @@ import adjuntar from "../../assets/images/icons/adjuntar.png";
 import send from "../../assets/images/icons/send.png";
 import LoaderComponent from "../loader/loader";
 import back from "../../assets/images/icons/back.png";
+import Resizer from "react-image-file-resizer";
+import { resizeFile } from "../../core/helpers";
 interface IProps {
   guest: IGuest;
 }
@@ -15,18 +17,19 @@ interface IState {
   messages: IMessage[] | undefined;
   rows: number;
   loader: boolean;
+  loaderMessage: boolean;
   imageAdjunta?: string;
   btnFile: any;
 }
 class LeaveMeesageComponent extends React.Component<IProps, IState> {
-
   constructor(props: any) {
     super(props);
     this.state = {
       messages: undefined,
       rows: 1,
       loader: true,
-      btnFile: React.createRef()
+      loaderMessage: false,
+      btnFile: React.createRef(),
     };
     this._setup();
   }
@@ -54,8 +57,13 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
         }
       );
   }
-  private _registerMessage(e: any): void {
+  private async _registerMessage(e: any) {
     e.preventDefault();
+    const { loaderMessage } = this.state;
+    if (loaderMessage) {
+      return;
+    }
+    this.setState({ loaderMessage: true });
     const form = e.target;
     const message = form.message.value;
     const image = form.image.files[0];
@@ -63,16 +71,29 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
     const { document } = this.props.guest;
     data.append("document", document);
     data.append("message", message);
-    data.append("image", image);
+    let dataImage;
+    if (image) {
+      try {
+        dataImage = await resizeFile(image);
+      } catch (error) {
+        console.log("error", error);
+      }
+    }
+    if (dataImage) {
+      data.append("dataImage", dataImage as string);
+    }
+
     MessageService.getInstance()
       .register(data)
       .then((res) => {
-        console.log("register messages", res);
-        this.state.btnFile.current.value = '';
+        this.state.btnFile.current.value = "";
         this._chargeMessages();
+        this.setState({ loaderMessage: false });
+      })
+      .catch(() => {
+        this.setState({ loaderMessage: false });
       });
     form.message.value = "";
-    
   }
   public _getMessages(): JSX.Element | JSX.Element[] {
     const { messages, loader } = this.state;
@@ -120,22 +141,40 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
     }
   }
   private _back(): void {
+    this.state.btnFile.current.value = "";
     this.setState({ imageAdjunta: undefined });
   }
   private _getPreview() {
-    const { imageAdjunta } = this.state;
-    return imageAdjunta ? (
-      <div
-        className="app-leave-message__adjunta"
-        style={{ backgroundImage: `url(${imageAdjunta})` }}
-      >
-        <button className="app-modal__content__btn-close" onClick={this._back}>
-          <img src={back} alt="" />
-        </button>
-      </div>
-    ) : (
-      ""
-    );
+    const { imageAdjunta, loaderMessage } = this.state;
+    if (imageAdjunta) {
+      return loaderMessage ? (
+        <div
+          className="app-leave-message__adjunta"
+          style={{ backgroundImage: `url(${imageAdjunta})` }}
+        >
+          <LoaderComponent />
+          <button
+            className="app-modal__content__btn-close"
+            onClick={this._back}
+          >
+            <img src={back} alt="" />
+          </button>
+        </div>
+      ) : (
+        <div
+          className="app-leave-message__adjunta"
+          style={{ backgroundImage: `url(${imageAdjunta})` }}
+        >
+          <button
+            className="app-modal__content__btn-close"
+            onClick={this._back}
+          >
+            <img src={back} alt="" />
+          </button>
+        </div>
+      );
+    }
+    return "";
   }
   render() {
     console.log("prps", this.props);
