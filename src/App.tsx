@@ -16,7 +16,6 @@ interface IState {
   guest?: IGuest;
 }
 class App extends React.Component<IProps, IState> {
-  
   constructor(props: any) {
     super(props);
     this._setup();
@@ -24,29 +23,29 @@ class App extends React.Component<IProps, IState> {
   }
   private _setup(): void {
     const guest: IGuest = {
-      "id": 1,
-      "firstname": "Guillermo",
-      "lastname": "Asto",
-      "document": "45219439",
-      "idImage": 1,
-      linkImage: 'http://127.0.0.1:8000/storage/45219439.jpeg',
-      "image": {
-        "id": 1,
-        "path": "45219439.jpeg",
-        "name": ''
-      }
+      id: 1,
+      firstname: "Guillermo",
+      lastname: "Asto",
+      document: "45219439",
+      idImage: 1,
+      linkImage: "http://127.0.0.1:8000/storage/45219439.jpeg",
+      image: {
+        id: 1,
+        path: "45219439.jpeg",
+        name: "",
+      },
     };
     this.state = {
-      guest:undefined,
+      guest: undefined,
     };
     this._enterGuest = this._enterGuest.bind(this);
-    window.addEventListener('resize', () => {
-      //const info = '=>' + window.innerHeight+ '--'+ window.outerHeight + '<br>'+this.state.info;
-      //console.log('info', info);
-      const doc = document.documentElement;
-      doc.style.setProperty('--app-height', `${window.innerHeight}px`);
-      //this.setState({info});
-    });
+    window.addEventListener("resize", this._updateHeight);
+    this._updateHeight();
+  }
+  private _updateHeight(): void {
+    console.log("info", window.innerHeight);
+    const doc = document.documentElement;
+    doc.style.setProperty("--app-height", `${window.innerHeight}px`);
   }
   private _setupAxios(): void {
     axios.defaults.baseURL = process.env.REACT_APP_API;

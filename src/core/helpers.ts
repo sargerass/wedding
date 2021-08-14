@@ -7,7 +7,7 @@ export function sleeper(ms: number) {
 export function resizeImage() {}
 
 export const resizeFile = (file: any) => {
-  const MAX_DIMENTION = 768;
+  const MAX_DIMENTION = 512;
   return new Promise((resolve) => {
     Resizer.imageFileResizer(
       file,
