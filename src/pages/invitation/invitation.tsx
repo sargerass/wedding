@@ -63,7 +63,10 @@ class InvitationPage extends React.Component<IProps, IState> {
           <div className="page-invitation__content__area">
             <img className="page-invitation__image" src={linkImage} alt="" />
             <div className="page-invitation__message">
-              {firstname}, estas invitado <br />a nuestra boda
+              Hola {firstname}, <br />
+              Te invitamos a celebrar nuestra boda, <br /> 
+              para nosotros es muy importante  <br />
+              contar con tu presencia.
             </div>
             <h2 className="page-home__sub-title">
               Cristina <br /> & <br /> Guillermo
