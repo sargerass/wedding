@@ -14,8 +14,10 @@ import bottomR from "./assets/images/bottom-r.png";
 interface IProps {}
 interface IState {
   guest?: IGuest;
+  info: string;
 }
 class App extends React.Component<IProps, IState> {
+  
   constructor(props: any) {
     super(props);
     this._setup();
@@ -37,8 +39,17 @@ class App extends React.Component<IProps, IState> {
     };
     this.state = {
       guest: undefined,
+      info: ''
     };
     this._enterGuest = this._enterGuest.bind(this);
+    window.addEventListener('resize', () => {
+      console.log('sss' + window.innerHeight+ '--'+ window.outerHeight);
+      //const info = '=>' + window.innerHeight+ '--'+ window.outerHeight + '<br>'+this.state.info;
+      //console.log('info', info);
+      const doc = document.documentElement;
+      doc.style.setProperty('--app-height', `${window.innerHeight}px`);
+      //this.setState({info});
+    });
   }
   private _setupAxios(): void {
     axios.defaults.baseURL = process.env.REACT_APP_API;
@@ -51,7 +62,7 @@ class App extends React.Component<IProps, IState> {
   }
   render() {
     const page = this._getPage();
-
+    const {info} = this.state;
     return (
       <div className="app" style={{ backgroundImage: `url(${bg})` }}>
         <div className="app__top app__top--r">
@@ -67,6 +78,12 @@ class App extends React.Component<IProps, IState> {
           <img src={bottomL} alt="" />
         </div>
         {page}
+
+        <div style={{position:'absolute', top:0, left: 0}}>
+        <strong>
+        {info}
+        </strong>
+        </div>
       </div>
     );
   }

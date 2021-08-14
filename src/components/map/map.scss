@@ -1,6 +1,6 @@
 .app-map {
   position: relative;
-  height: 100vh;
+  height: var(--app-height);
   &__buttons {
     position: absolute;
     left: 0;
