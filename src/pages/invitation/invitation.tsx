@@ -29,6 +29,7 @@ class InvitationPage extends React.Component<IProps, IState> {
     this._setup();
   }
   private _setup(): void {
+    this._goFalabella = this._goFalabella.bind(this);
     this._closeModal = this._closeModal.bind(this);
   }
 
@@ -48,6 +49,9 @@ class InvitationPage extends React.Component<IProps, IState> {
     }
     LogService.getInstance().register("Open modal", section);
     this.setState({ showModal: true, component, type });
+  }
+  private _goFalabella(): void {
+    LogService.getInstance().register("Go falabella");
   }
   render() {
     const { guest } = this.props;
@@ -73,9 +77,9 @@ class InvitationPage extends React.Component<IProps, IState> {
               </div>
               <div className="page-invitation__date__index">2021</div>
             </div>
-            <div className="page-invitation__falabella">
+            <a onClick={this._goFalabella} className="page-invitation__falabella" target="_blank" href="https://www.noviosfalabella.com.pe/novios-pe/public/resultadoBusquedaNovios.do?categoria=todas&idsJerarquias=&nombreCategoria=&nivelCategoria=&codigoEvento=&dvEvento=&radTipoBusqueda=1&txtBusqueda=656316-03">
               Novios Falabella <strong>656316-03</strong>
-            </div>
+            </a>
             <div className="page-invitation__buttons">
               <button
                 className="app-button app-button--block app-button--secondary"

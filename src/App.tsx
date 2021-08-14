@@ -45,7 +45,6 @@ class App extends React.Component<IProps, IState> {
     AppInterceptor.getInstance().init();
   }
   private _enterGuest(guest: any): void {
-    console.log("guest", guest);
     this.setState({
       guest,
     });

@@ -3,6 +3,7 @@ import React from "react";
 //import Lottie from "react-lottie";
 import "./map.scss";
 import point from "../../assets/images/icons/point.png";
+import { LogService } from '../../core/services/logs.service';
 interface IProps {
 
 }
@@ -24,12 +25,14 @@ class MapComponent extends React.Component<IProps, IState> {
   }
   private _setup(): void {
     this._registerMessage = this._registerMessage.bind(this);
+    this._goWaze = this._goWaze.bind(this);
   }
-
+  private _goWaze():void {
+    LogService.getInstance().register("Click Waze");
+  }
   private _registerMessage(e: any): void {
   }
   render() {
-    console.log('prps', this.props, process.env.REACT_APP_GM );
     const center = MapComponent.defaultProps.center;
     const zoom = MapComponent.defaultProps.zoom;
     const linkWaze = `https://www.waze.com/ul?ll=${center.lat}%2C${center.lng}&navigate=yes&zoom=17`;
@@ -44,7 +47,7 @@ class MapComponent extends React.Component<IProps, IState> {
           <Marker lat={center.lat} lng={center.lng} />
         </GoogleMapReact>
         <div className="app-map__buttons">
-          <a className="app-button app-button--block" href={linkWaze} target="_blank" >
+          <a className="app-button app-button--block" href={linkWaze} target="_blank" onClick={this._goWaze}>
             Ir con Waze
           </a>
         </div>

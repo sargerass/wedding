@@ -33,13 +33,16 @@ class HomePage extends React.Component<IProps, IState> {
   }
   private _validateDocument(e: any): void {
     e.preventDefault();
-    console.log("e", e);
     const form = e.target;
     const document = form.document.value;
-    LogService.getInstance().register("Buscando");
+    LogService.getInstance().register("Buscando", document);
     this.setState({ loading: true });
+
+    const documentClear =  document.replace(/[^0-9]/g,'');
+    console.log('documentClear', documentClear);
+    
     GuestService.getInstance()
-      .validateDocument(document)
+      .validateDocument(documentClear)
       .then(
         (guest) => {
           sessionStorage.setItem("user", "" + guest.id);

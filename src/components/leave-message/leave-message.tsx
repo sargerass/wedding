@@ -11,6 +11,7 @@ import back from "../../assets/images/icons/back.png";
 import Resizer from "react-image-file-resizer";
 import { resizeFile } from "../../core/helpers";
 import imageFlour from '../../assets/images/top-r.png';
+import { LogService } from "../../core/services/logs.service";
 interface IProps {
   guest: IGuest;
 }
@@ -52,10 +53,11 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
       .then(
         (res) => {
           this.setState({ messages: res, loader: false });
+          LogService.getInstance().register("Cargaron me mensajes");
         },
         (error) => {
           this.setState({ messages: [], loader: false });
-          console.log("error", error);
+          LogService.getInstance().register("No cargaron los mensajes");
         }
       );
   }
@@ -91,9 +93,11 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
         this.state.btnFile.current.value = "";
         this._chargeMessages();
         this.setState({ loaderMessage: false });
+        LogService.getInstance().register("Mensaje enviado");
       })
       .catch(() => {
         this.setState({ loaderMessage: false });
+        LogService.getInstance().register("Mensaje error envio");
       });
     form.message.value = "";
   }
@@ -128,8 +132,8 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
     elementMessages?.scrollTo({ top: 100000, behavior: "smooth" });
   }
   private _uploadPhoto(): void {
-    console.log("this.btnFile.current;", this.state.btnFile.current);
     this.state.btnFile.current.click();
+    LogService.getInstance().register("Subiendo Imagen");
   }
   private _chargeImage(): void {
     const input = this.state.btnFile.current;
@@ -179,7 +183,6 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
     return "";
   }
   render() {
-    console.log("prps", this.props);
     const { imageAdjunta } = this.state;
     const messages = this._getMessages();
     setTimeout(() => {
@@ -205,6 +208,7 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
               name="message"
               rows={2}
               placeholder="Escribe aquí tu mensaje"
+              required
             ></textarea>
             <button
               type="button"
