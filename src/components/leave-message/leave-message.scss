@@ -22,7 +22,7 @@
     height: var(--app-height);
     width: 100%;
     z-index: 3;
-    background-size: contain;
+    background-size: 60%;
     background-position: center;
     background-repeat: no-repeat;
     display: flex;
@@ -72,7 +72,7 @@
 @supports (-webkit-touch-callout: none) {
   .app-leave-message {
     &__form {
-      bottom: 66px;
+      //bottom: 66px;
     }
   }
 }

@@ -73,12 +73,12 @@ class InvitationPage extends React.Component<IProps, IState> {
               <div className="page-invitation__date__box">
                 <div className="page-invitation__date__side">Sábado</div>
                 <div className="page-invitation__date__day">28</div>
-                <div className="page-invitation__date__side">12:00 M</div>
+                <div className="page-invitation__date__side">01:00 PM</div>
               </div>
               <div className="page-invitation__date__index">2021</div>
             </div>
             <a onClick={this._goFalabella} className="page-invitation__falabella" target="_blank" href="https://www.noviosfalabella.com.pe/novios-pe/public/resultadoBusquedaNovios.do?categoria=todas&idsJerarquias=&nombreCategoria=&nivelCategoria=&codigoEvento=&dvEvento=&radTipoBusqueda=1&txtBusqueda=656316-03">
-              Novios Falabella <strong>656316-03</strong>
+              Ver lista de novios: <strong>656316-03</strong>
             </a>
             <div className="page-invitation__buttons">
               <button
