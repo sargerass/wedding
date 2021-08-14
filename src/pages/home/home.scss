@@ -8,6 +8,7 @@
     height: 100%;
     position: relative;
     z-index: 1;
+    padding-top: 15px;
   }
   &__title {
     text-transform: uppercase;
@@ -40,6 +41,13 @@
       font-size: 16px;
       letter-spacing: .2em;
       margin-bottom: 15px;
+    }
+  }
+}
+@media (max-height: 400px) and (orientation: landscape) {
+  .page-home {
+    &__content {
+      align-items: flex-start;
     }
   }
 }

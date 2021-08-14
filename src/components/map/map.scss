@@ -11,6 +11,10 @@
       margin: 0;
     }
   }
+  &__google {
+    width: 100%;
+    height: calc(var(--app-height) - 34px);
+  }
   &__marker {
     width: 180px;
     display: flex;

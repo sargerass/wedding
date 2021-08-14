@@ -38,7 +38,7 @@ class MapComponent extends React.Component<IProps, IState> {
     const linkWaze = `https://www.waze.com/ul?ll=${center.lat}%2C${center.lng}&navigate=yes&zoom=17`;
     return (
       <div className="app-map">
-        <div style={{ height: 'calc(100vh - 34px)', width: '100%' }}>
+        <div className="app-map__google">
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GM as string }}
           defaultCenter={center}

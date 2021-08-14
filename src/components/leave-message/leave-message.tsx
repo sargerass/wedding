@@ -96,7 +96,8 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
         LogService.getInstance().register("Mensaje enviado");
       })
       .catch(() => {
-        this.setState({ loaderMessage: false });
+        this.state.btnFile.current.value = "";
+        this.setState({ loaderMessage: false, imageAdjunta: '' });
         LogService.getInstance().register("Mensaje error envio");
       });
     form.message.value = "";

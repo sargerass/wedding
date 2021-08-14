@@ -4,6 +4,7 @@
   width: 100%;
   height: var(--app-height);
   overflow-y: auto;
+  position: relative;
   &::before {
     content: '';
     background-color: rgba($color: #ffffff, $alpha: .5);
