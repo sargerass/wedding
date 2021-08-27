@@ -74,7 +74,7 @@ class InvitationPage extends React.Component<IProps, IState> {
               <div className="page-invitation__date__box">
                 <div className="page-invitation__date__side">Sábado</div>
                 <div className="page-invitation__date__day">28</div>
-                <div className="page-invitation__date__side">01:00 PM</div>
+                <div className="page-invitation__date__side">01:30 PM</div>
               </div>
               <div className="page-invitation__date__index">2021</div>
             </div>
