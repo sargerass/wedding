@@ -5,6 +5,7 @@ import { MessageService } from "../../core/services";
 import "./leave-message.scss";
 import bg from "../../assets/images/messages.jpg";
 import adjuntar from "../../assets/images/icons/adjuntar.png";
+import camera from "../../assets/images/icons/camera.png";
 import send from "../../assets/images/icons/send.png";
 import LoaderComponent from "../loader/loader";
 import back from "../../assets/images/icons/back.png";
@@ -216,7 +217,7 @@ class LeaveMeesageComponent extends React.Component<IProps, IState> {
               className="app-button-icon"
               onClick={this._uploadPhoto}
             >
-              <img src={adjuntar} alt="" />
+              <img id="imageCamera" src={camera} alt="" />
             </button>
           </div>
           <input

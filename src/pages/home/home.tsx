@@ -3,12 +3,8 @@ import HeartsComponent from "../../components/hearts/hearts";
 import { GuestService } from "../../core/services";
 //import Lottie from "react-lottie";
 import "./home.scss";
-//import bg from "../../assets/images/bg.png";
-import ModalComponent from "../../components/modal/modal";
-import { EnumModalTransition } from "../../core/enums";
 import { LogService } from "../../core/services/logs.service";
 import LoaderComponent from "../../components/loader/loader";
-import { sleeper } from "../../core/helpers";
 import { IGuest } from "../../core/intrefaces";
 interface IProps {
   onFinish: Function;
@@ -78,7 +74,7 @@ class HomePage extends React.Component<IProps, IState> {
     };
   }
   private _getBodyHome(): JSX.Element {
-    const { hasError, loading } = this.state;
+    const { hasError } = this.state;
     const error = hasError
       ? "Número incorrecto, asegúrate de haber escrito bien tu documento"
       : "";
@@ -107,7 +103,7 @@ class HomePage extends React.Component<IProps, IState> {
     );
   }
   render() {
-    const { hasError, loading } = this.state;
+    const { loading } = this.state;
     const content = loading ? <LoaderComponent /> : this._getBodyHome();
     return (
       <div className="page page-home">

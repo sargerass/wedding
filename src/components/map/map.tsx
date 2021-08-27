@@ -47,7 +47,7 @@ class MapComponent extends React.Component<IProps, IState> {
           <Marker lat={center.lat} lng={center.lng} />
         </GoogleMapReact>
         <div className="app-map__buttons">
-          <a className="app-button app-button--block" href={linkWaze} target="_blank" onClick={this._goWaze}>
+          <a className="app-button app-button--block" rel="Waze" href={linkWaze} target="_blank" onClick={this._goWaze}>
             Ir con Waze
           </a>
         </div>

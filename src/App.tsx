@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./app.scss";
 import HomePage from "./pages/home/home";
 import axios from "axios";
@@ -43,7 +42,6 @@ class App extends React.Component<IProps, IState> {
     this._updateHeight();
   }
   private _updateHeight(): void {
-    console.log("info", window.innerHeight);
     const doc = document.documentElement;
     doc.style.setProperty("--app-height", `${window.innerHeight}px`);
   }

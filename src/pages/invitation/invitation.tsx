@@ -4,7 +4,6 @@ import MapComponent from "../../components/map/map";
 import ModalComponent from "../../components/modal/modal";
 import { EnumModalTransition } from "../../core/enums";
 import { IGuest, IMessage } from "../../core/intrefaces";
-import { MessageService } from "../../core/services";
 import { LogService } from "../../core/services/logs.service";
 import "./invitation.scss";
 interface IProps {
@@ -38,9 +37,8 @@ class InvitationPage extends React.Component<IProps, IState> {
   }
   private _showModal(type: EnumModalTransition): void {
     const { guest } = this.props;
-    const { messages } = this.state;
     let component, section;
-    if (type == EnumModalTransition.Revealing) {
+    if (type === EnumModalTransition.Revealing) {
       section = "map";
       component = <MapComponent />;
     } else {
