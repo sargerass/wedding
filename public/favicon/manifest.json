@@ -41,7 +41,7 @@
     }
   ],
   "start_url": "https://www.vamosamiboda.com",
-  "display": "PWA",
+  "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
 }
